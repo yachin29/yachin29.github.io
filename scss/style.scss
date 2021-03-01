@@ -1,0 +1,91 @@
+@import "_reset.scss";
+@import "_mixin.scss";
+
+
+body{
+height: 2000px;
+}
+header{
+width: 100%;
+height: 120px;
+background-color: #edcb9f;
+display: flex;
+align-items: center;
+justify-content: space-around;
+position: sticky;
+top:-60px;/* 60px-120px=-60px */
+}
+.header-inner{
+display: flex;
+align-items: center;
+justify-content: space-around;
+width: 100%;
+height: 60px;
+position: sticky;
+top:0;
+}
+.g-nav>ul{
+display: flex;
+}
+.g-nav li{
+margin: 0 16px;
+line-height: 1.2;
+text-align: center;
+}
+.g-nav a{
+display: block;
+color: #222;
+padding: 10px 16px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+.g-nav a>span{
+display: block;
+text-align: center;
+font-size: 14px;
+color: #3564bb;
+}
+.g-nav a::after{
+display: block;
+content: "";
+width: 100%;
+height: 4px;
+background-color: #3564bb;
+position: absolute;
+left: 0;
+bottom: 0;
+transform: scale(0);
+transition: 0.2s;
+}
+.g-nav a:hover::after{
+transform: scale(1);
+}
+.video-wrapper{
+width: 100%;
+height: 100vh;
+position: fixed;
+top: 0;
+left: 0;
+z-index: -1;
+}
+.video-wrapper>video{
+object-fit: cover;
+width: 100%;
+height: 100%;
+}
+.content{
+width: 40%;
+background-color: rgba(255, 255, 255, 0.7);
+padding: 40px;
+margin: 100px 0 0 50px;
+}
+h2{
+text-align: center;
+@include font-size(60);
+margin-bottom: 40px;
+}
+.content>p{
+@include font-size(20);
+line-height: 2;
+}
