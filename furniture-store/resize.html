@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>resizeイベントの設定</title>
+<style>
+body{
+background-color: cadetblue;
+}
+body.move{
+background-color: #f13820;
+}
+</style>
+</head>
+<body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+<script>
+$(function(){
+//resize前の幅を取得
+let windowWidth = $(window).width();
+
+//resizeとloadイベントの設定
+$(window).on('resize load',function(){
+//resize後の幅を取得
+let ww = $(window).width();
+
+//windowWidthとwwが一致しなかったら
+if(windowWidth != ww){
+//900px以上になったらaddClassする
+if(window.matchMedia('(min-width:900px)').matches){
+$('body').addClass('move');
+}else{
+$('body').removeClass('move');
+}
+windowWidth = ww;
+}
+
+});
+});
+</script>
+</body>
+</html>
