@@ -2,9 +2,9 @@
 //vegasの呼び出し
 $('#main-visual').vegas({
     slides: [
-        {src: "/2024-05/restaurant-site/img/main-1.webp"},
-        {src: "/2024-05/restaurant-site/img/main-2.webp"},
-        {src: "/2024-05/restaurant-site/img/main-3.webp"},
+        {src: "/restaurant-site/img/main-1.webp"},
+        {src: "/restaurant-site/img/main-2.webp"},
+        {src: "/restaurant-site/img/main-3.webp"},
     ],
     timer: false,
     transition: 'blur',
@@ -33,7 +33,7 @@ $('#ham-btn').removeClass('is-active');
 
 
 //ajaxで外部データを呼び出す
-$('#news-list').load('/2024-05/restaurant-site/news.txt');
+$('#news-list').load('/restaurant-site/news.txt');
 
 
 
