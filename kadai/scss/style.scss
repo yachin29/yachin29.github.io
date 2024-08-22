@@ -42,7 +42,6 @@ color: #FFF;
 }
 }
 
-
 main{
 width: 75%;
 background-color: #eee2d3;
@@ -96,6 +95,12 @@ margin:0 auto 50px;
 padding: 50px 0 50px 50px;
 >li{
 margin-bottom: 20px;
+>a{
+color: #111;
+&:hover{
+text-decoration: underline 2px;
+}
+}
 }
 }
 

@@ -39,11 +39,6 @@ $('#list-5').addClass('current').siblings('li').removeClass('current');
 $('#list-6').addClass('current').siblings('li').removeClass('current');
 }
 
-
-
-
-
 });
-
 
 });
