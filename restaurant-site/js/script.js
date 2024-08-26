@@ -1,10 +1,12 @@
 
+$(function(){
+
 //vegasの呼び出し
 $('#main-visual').vegas({
     slides: [
-        {src: "/restaurant-site/img/main-1.webp"},
-        {src: "/restaurant-site/img/main-2.webp"},
-        {src: "/restaurant-site/img/main-3.webp"},
+        {src: "img/main-1.webp"},
+        {src: "img/main-2.webp"},
+        {src: "img/main-3.webp"},
     ],
     timer: false,
     transition: 'blur',
@@ -13,8 +15,6 @@ $('#main-visual').vegas({
     animationDuration:1000,
 });
 
-
-$(function(){
 
 //ハンバーガーボタン
 //まず#g-navを非表示にする
