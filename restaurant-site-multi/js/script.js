@@ -56,9 +56,7 @@ $('#this-year').text(fullYear);
 }
 
 
-//多言語用のリダイレクト
 
-document.querySelector('btn-ja').href = 'https://yachin29.github.io/restaurant-site-multi/';
 
 
 //イタリア語のリダイレクト
