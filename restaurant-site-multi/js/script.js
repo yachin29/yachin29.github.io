@@ -56,18 +56,14 @@ $('#this-year').text(fullYear);
 }
 
 
-
-
+//多言語用のリダイレクト
+$('#btn-ja').href = 'https://yachin29.github.io/restaurant-site-multi/';
 
 //イタリア語のリダイレクト
-$('#btn-it').on('click',function(){
-$(this).href = 'https://yachin29-github-io.translate.goog/restaurant-site-multi/?_x_tr_sl=ja&_x_tr_tl=it&_x_tr_hl=ja';
-});
+$('#btn-it').href = 'https://yachin29-github-io.translate.goog/restaurant-site-multi/?_x_tr_sl=ja&_x_tr_tl=it&_x_tr_hl=ja';
 
 //フランス語のリダイレクト
-$('#btn-fr').on('click',function(){
-$(this).href = 'https://yachin29-github-io.translate.goog/restaurant-site-multi/?_x_tr_sl=ja&_x_tr_tl=fr&_x_tr_hl=ja';
-});
+$('#btn-fr').href = 'https://yachin29-github-io.translate.goog/restaurant-site-multi/?_x_tr_sl=ja&_x_tr_tl=fr&_x_tr_hl=ja';
 
 
 
