@@ -56,6 +56,4 @@ $('#this-year').text(fullYear);
 }
 
 
-
-
 });
