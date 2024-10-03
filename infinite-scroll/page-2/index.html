@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figmaオートレイアウトの使い方【サルでもわかる入門編】</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div id="container">
+<div class="wrapper">
+<div class="pages">
+<h2>Figmaオートレイアウトの使い方<br class="sp">【サルでもわかる入門編】</h2>
+<div class="pages-wrapper">
+<div class="text-box">
+<p>
+この動画は、Figmaのオートレイアウトの使い方について解説しています。オートレイアウトは、要素を自動で配置してレイアウトを作成する機能です。<br>
+
+この動画では、オートレイアウトの基本的な使い方から、レイアウトを組む際のメリットまで詳しく解説されています。また、実際にレイアウトを組みながら、オートレイアウトの使い方を学ぶことができます。<br>
+この動画は、Figmaを使い始めたばかりの人や、オートレイアウトの使い方を学びたい人におすすめです。
+</p>
+
+<h3>この動画の目次</h3>
+<ol>
+<li>オートレイアウトとは</li>
+<li>どの場面で使うの</li>
+<li>使うメリット</li>
+<li>基本的な使い方プラスアルファ</li>
+<li>レイアウトを組ん でみよう</li>
+</ol>
+</div>
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/pVDDg72mays?si=boMgD0Jb_YEICjWF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div><!-- /.video-wrapper -->
+</div><!-- /.pages-wrapper -->
+
+
+</div><!-- /.pages -->
+</div><!-- /.wrapper -->
+<a href="../page-3/" id="next">次のページへ</a>
+
+</div><!-- /#container -->
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous'></script>
+<script src="js/jquery.clever-infinite-scroll.js"></script>
+<script>
+//トップページへのリダイレクト
+setTimeout("redirect()", 0);
+function redirect(){
+    location.href='../index.html';
+}
+
+$('#container').cleverInfiniteScroll({
+contentsWrapperSelector: '#container',
+contentSelector: '.wrapper',
+nextSelector: '#next',
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figmaの基本</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div id="container">
+<div class="wrapper">
+<div class="pages">
+<h2>Figmaの基本</h2>
+<div class="pages-wrapper">
+<div class="text-box">
+<p>この動画は、Figmaの基本の使い方について解説しています。Figmaは、ブラウザ上で使えるデザインツールです。<br>
+この動画では、Figmaの基本的な操作方法から、デザインファイルの作り方まで詳しく解説されています。また、実際にデザインファイルを作成しながら、Figmaの使い方を学ぶことができます。<br>
+この動画は、Figmaを使い始めたばかりの人や、Figmaの使い方を学びたい人におすすめです。</p>
+<h3>この動画の目次</h3>
+<ol>
+<li>Figmaとは</li>
+<li>Figmaのインストール</li>
+<li>Figmaの基本的な操作方法</li>
+<li>デザインファイルの作成</li>
+<li>デザインファイルの共有</li>
+<li>Figmaの便利な機能</li>
+</ol>
+</div>
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/39pwwaDGGa8?si=pzy1d9Ve49ayYdm-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div><!-- /.video-wrapper -->
+</div><!-- /.pages-wrapper -->
+</div><!-- /.pages -->
+</div><!-- /.wrapper -->
+<a href="../page-2/" id="next">次のページへ</a>
+</div><!-- /#container -->
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous'></script>
+<script src="js/jquery.clever-infinite-scroll.js"></script>
+<script>
+//トップページへのリダイレクト
+setTimeout("redirect()", 0);
+function redirect(){
+    location.href='../index.html';
+}
+
+$('#container').cleverInfiniteScroll({
+contentsWrapperSelector: '#container',
+contentSelector: '.wrapper',
+nextSelector: '#next',
+});
+
+
+
+</script>
+
+
+</body>
+</html>
