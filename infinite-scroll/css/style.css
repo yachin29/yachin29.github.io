@@ -40,7 +40,7 @@ bottom: 50px;
 
 /* 下層ページ */
 .pages{
-min-height: 130vh;
+min-height: 110vh;
 padding: 50px 10px;
 >h2{
 text-align: center;
