@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文字にグラデーションを掛ける方法</title>
+<style>
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body{
+background-color: #000;
+}
+header{
+width: 100%;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+h1{
+color: transparent;
+font-size: 60px;
+background-image: linear-gradient(108deg,#0090f7,#ba62fc 33%,#f2416b 66%,#f55600);
+background-clip: text;
+}
+</style>
+</head>
+<body>
+<header>
+ <h1>Lorem ipsum dolor sit amet.</h1> 
+</header>
+
+</body>
+</html>
