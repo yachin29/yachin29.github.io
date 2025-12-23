@@ -1,0 +1,97 @@
+//パーシャルファイルを呼び出す
+@use "reset";//_reset.scssの省略形
+
+//変数の登録
+$color_1:#c90a2d;
+$color_2:#249717;
+
+
+header{
+background-color: $color_1;
+padding: 20px 0;
+text-align: center;
+color: #FFF;
+}
+footer{
+background-color: $color_2;
+padding: 20px 0;
+text-align: center;
+color: #FFF;
+}
+
+.col-wrapper{
+margin: 50px auto 100px;
+columns: 4;
+@media (width<=960px){
+columns: 3;
+}
+@media (width<=640px){
+columns: 2;
+}
+@media (width<=480px){
+columns: 1;
+}
+gap: 20px;
+}
+
+
+.col-box{
+break-inside: avoid;
+background-color: #dfdddd;
+padding: 16px;
+margin-bottom: 20px;
+>h2{
+font-size: 20px;
+margin-bottom: 10px;
+text-align: center;
+}
+>a{
+display: block;
+margin-bottom: 10px;
+overflow: hidden;
+>img{
+transition: 0.2s;
+&:hover{
+scale: 1.15;
+}
+}
+}
+}
+
+
+#all:checked~.col-wrapper>.col-box{
+display: block;
+}
+#tate:checked~.col-wrapper>.col-box:not([data-category="tate"]){
+display: none;
+}
+#yoko:checked~.col-wrapper>.col-box:not([data-category="yoko"]){
+display: none;
+}
+
+/* ラジオボタンのスタイル */
+[type="radio"]{
+display: none;
+}
+label{
+display: inline-block;
+border: 2px solid #333;
+width: 160px;
+padding: 10px 0;
+text-align: center;
+margin: 50px 10px 0 0;
+cursor: pointer;
+@media (width<=640px){
+width: 100px;  
+}
+}
+[type="radio"]:checked + label{
+background-color: #333;
+color: #FFF;
+}
+main{
+width: 90%;
+margin: 0 auto;
+background-color: #249717;
+}
+
