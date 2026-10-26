@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>動画をhtmlに埋め込む</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+.video-wrapper{
+width: 100%;
+height: 100vh;
+margin: 0 auto;
+position: fixed;
+top: 0;
+left: 0;
+z-index: -1;
+}
+video{
+object-fit: cover;
+object-position: 60% 50%;/* Ｘ方向、Ｙ方向の指定 */
+width: 100%;
+height: 100%;
+}
+
+.text-wrapper{
+width: 50%;
+padding: 200px 100px;
+background-color: #ffffff44;
+backdrop-filter: blur(10px);
+font-family: "Permanent Marker", cursive;
+}
+h1{
+font-size: 48px;
+margin-bottom: 50px;
+}
+p{
+font-size: 22px;
+line-height: 2;
+}
+
+</style>
+</head>
+<body>
+<div class="video-wrapper">
+<video src="img/main.mp4" autoplay muted loop playsinline></video>
+</div>
+
+<div class="text-wrapper">
+<h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quia?</h1>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis quo quisquam architecto quod magnam dolores itaque quam. Possimus laborum voluptates voluptatibus, dolorem repudiandae ea, rem nisi quidem voluptate aliquid voluptas, sapiente explicabo hic dolores aut quibusdam suscipit. Debitis excepturi adipisci praesentium, reprehenderit voluptatum perspiciatis nostrum? Ad quisquam doloribus accusantium molestias ipsum incidunt fugiat earum qui? Nulla eligendi doloremque in ipsam placeat magnam sapiente deleniti cumque quis vitae ad, quam expedita harum fugiat vel id culpa odit ipsum temporibus, error perspiciatis consequuntur. Repudiandae impedit vel quidem! Numquam dolor suscipit ipsum magnam distinctio, ad eum, et alias autem amet quod provident consectetur. Beatae similique architecto in commodi nesciunt ipsa velit at atque excepturi ad laborum omnis rerum placeat hic ducimus eaque ullam aliquam, corrupti, necessitatibus sapiente? Modi labore autem ullam sapiente. Nostrum libero error distinctio, a laborum perferendis! Ullam ipsam repellendus porro non repudiandae modi dignissimos voluptate distinctio error, ea dolorum dolores iste pariatur ut, voluptates dolor delectus officiis? Hic architecto dolores iure vel tempora fugiat, amet consequuntur ut cum earum ullam dolore, a animi consequatur rem, vero modi itaque nemo. Incidunt expedita impedit error maxime voluptates voluptatem eos culpa molestias iure aspernatur natus debitis ducimus nam, consectetur, quos itaque dolores dolorem.</p>
+</div>
+
+
+</body>
+</html>
