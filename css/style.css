@@ -1,4 +1,34 @@
-h1{
-text-align: center;
-color: red;
+:root {
+  --particle-wine: #eb3182;
+  --particle-green: #0f51b3;
+  --particle-ivory: #a00fd1;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.particle-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.particle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+/* ユーザーがアニメーションを減らす設定にしている場合、パーティクルを表示しない */
+@media (prefers-reduced-motion: reduce) {
+  .particle-layer {
+    display: none;
+  }
 }
