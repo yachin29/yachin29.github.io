@@ -501,10 +501,10 @@
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           const data = await response.json();
           for (const key of Object.keys(CATEGORY_NAMES)) {
-            if (!Array.isArray(data[key]) || data[key].length !== 40 || data[key].some((item) =>
+            if (!Array.isArray(data[key]) || data[key].length === 0 || data[key].some((item) =>
               !item || !Number.isInteger(item.id) || typeof item.title !== "string" || typeof item.code !== "string"
             )) {
-              throw new Error(`問題データ「${key}」の形式が正しくありません。各カテゴリーに40問必要です。`);
+              throw new Error(`問題データ「${key}」の形式が正しくありません。各カテゴリーに1問以上必要です。`);
             }
           }
           problems = data;
