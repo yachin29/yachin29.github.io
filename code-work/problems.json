@@ -1,0 +1,810 @@
+{
+  "html": [
+    {
+      "id": 1,
+      "title": "見出し",
+      "code": "<h1>こんにちは</h1>"
+    },
+    {
+      "id": 2,
+      "title": "段落",
+      "code": "<p>今日は晴れです。</p>"
+    },
+    {
+      "id": 3,
+      "title": "リンク",
+      "code": "<a href=\"/\">ホーム</a>"
+    },
+    {
+      "id": 4,
+      "title": "ボタン",
+      "code": "<button>送信</button>"
+    },
+    {
+      "id": 5,
+      "title": "画像",
+      "code": "<img src=\"cat.png\" alt=\"ねこ\">"
+    },
+    {
+      "id": 6,
+      "title": "リスト",
+      "code": "<ul>\n  <li>りんご</li>\n</ul>"
+    },
+    {
+      "id": 7,
+      "title": "入力欄",
+      "code": "<label>名前 <input></label>"
+    },
+    {
+      "id": 8,
+      "title": "クラス付き要素",
+      "code": "<div class=\"box\">箱</div>"
+    },
+    {
+      "id": 9,
+      "title": "見出しと段落",
+      "code": "<h2>メニュー</h2>\n<p>商品一覧</p>"
+    },
+    {
+      "id": 10,
+      "title": "HTMLの基本",
+      "code": "<!doctype html>\n<html lang=\"ja\">\n</html>"
+    },
+    {
+      "id": 11,
+      "title": "小見出し",
+      "code": "<h3>お知らせ</h3>"
+    },
+    {
+      "id": 12,
+      "title": "太字",
+      "code": "<strong>重要</strong>"
+    },
+    {
+      "id": 13,
+      "title": "斜体",
+      "code": "<em>おすすめ</em>"
+    },
+    {
+      "id": 14,
+      "title": "区切り線",
+      "code": "<hr>"
+    },
+    {
+      "id": 15,
+      "title": "テキスト入力",
+      "code": "<input type=\"text\">"
+    },
+    {
+      "id": 16,
+      "title": "チェックボックス",
+      "code": "<input type=\"checkbox\">"
+    },
+    {
+      "id": 17,
+      "title": "番号付きリスト",
+      "code": "<ol>\n  <li>手順1</li>\n</ol>"
+    },
+    {
+      "id": 18,
+      "title": "短いラベル",
+      "code": "<span>新着</span>"
+    },
+    {
+      "id": 19,
+      "title": "紹介見出し",
+      "code": "<h2>自己紹介</h2>"
+    },
+    {
+      "id": 20,
+      "title": "クラス付き段落",
+      "code": "<p class=\"note\">メモ</p>"
+    },
+    {
+      "id": 21,
+      "title": "ラベルと入力欄",
+      "code": "<label for=\"email\">メール</label>\n<input id=\"email\">"
+    },
+    {
+      "id": 22,
+      "title": "送信フォーム",
+      "code": "<form>\n  <button>送信</button>\n</form>"
+    },
+    {
+      "id": 23,
+      "title": "選択メニュー",
+      "code": "<select><option>りんご</option></select>"
+    },
+    {
+      "id": 24,
+      "title": "複数行入力",
+      "code": "<textarea></textarea>"
+    },
+    {
+      "id": 25,
+      "title": "ナビゲーション",
+      "code": "<nav><a href=\"/\">トップ</a></nav>"
+    },
+    {
+      "id": 26,
+      "title": "ページ下部",
+      "code": "<footer>ページの終わり</footer>"
+    },
+    {
+      "id": 27,
+      "title": "ページ上部",
+      "code": "<header>ページの始まり</header>"
+    },
+    {
+      "id": 28,
+      "title": "本文",
+      "code": "<main>本文</main>"
+    },
+    {
+      "id": 29,
+      "title": "セクション",
+      "code": "<section>紹介</section>"
+    },
+    {
+      "id": 30,
+      "title": "記事",
+      "code": "<article>記事の内容</article>"
+    },
+    {
+      "id": 31,
+      "title": "空の領域",
+      "code": "<div id=\"app\"></div>"
+    },
+    {
+      "id": 32,
+      "title": "説明付きテキスト",
+      "code": "<p title=\"説明\">ポイント</p>"
+    },
+    {
+      "id": 33,
+      "title": "閉じるボタン",
+      "code": "<button type=\"button\">閉じる</button>"
+    },
+    {
+      "id": 34,
+      "title": "メールリンク",
+      "code": "<a href=\"mailto:hi@example.com\">連絡</a>"
+    },
+    {
+      "id": 35,
+      "title": "色のリスト",
+      "code": "<ul><li>赤</li><li>青</li></ul>"
+    },
+    {
+      "id": 36,
+      "title": "用語リスト",
+      "code": "<dl><dt>色</dt><dd>赤</dd></dl>"
+    },
+    {
+      "id": 37,
+      "title": "時刻",
+      "code": "<time>12:00</time>"
+    },
+    {
+      "id": 38,
+      "title": "リンク付き見出し",
+      "code": "<h2><a href=\"/\">ホーム</a></h2>"
+    },
+    {
+      "id": 39,
+      "title": "小さな注記",
+      "code": "<small>注記</small>"
+    },
+    {
+      "id": 40,
+      "title": "改行",
+      "code": "上の行<br>下の行"
+    }
+  ],
+  "css": [
+    {
+      "id": 1,
+      "title": "文字色",
+      "code": "p { color: red; }"
+    },
+    {
+      "id": 2,
+      "title": "余白",
+      "code": ".box { padding: 8px; }"
+    },
+    {
+      "id": 3,
+      "title": "文字サイズ",
+      "code": "h1 { font-size: 24px; }"
+    },
+    {
+      "id": 4,
+      "title": "背景色",
+      "code": ".card { background: white; }"
+    },
+    {
+      "id": 5,
+      "title": "ホバー時の色",
+      "code": "button:hover { color: blue; }"
+    },
+    {
+      "id": 6,
+      "title": "画像の幅",
+      "code": "img { width: 100%; }"
+    },
+    {
+      "id": 7,
+      "title": "文字を中央に配置",
+      "code": ".center { text-align: center; }"
+    },
+    {
+      "id": 8,
+      "title": "外側の余白",
+      "code": "body { margin: 0; }"
+    },
+    {
+      "id": 9,
+      "title": "要素を隠す",
+      "code": ".hidden { display: none; }"
+    },
+    {
+      "id": 10,
+      "title": "リストの点を消す",
+      "code": "ul { list-style: none; }"
+    },
+    {
+      "id": 11,
+      "title": "外側の余白",
+      "code": ".box { margin: 8px; }"
+    },
+    {
+      "id": 12,
+      "title": "青い文字",
+      "code": ".text { color: blue; }"
+    },
+    {
+      "id": 13,
+      "title": "太字",
+      "code": "p { font-weight: bold; }"
+    },
+    {
+      "id": 14,
+      "title": "枠線",
+      "code": ".card { border: 1px solid gray; }"
+    },
+    {
+      "id": 15,
+      "title": "背景色",
+      "code": "body { background: white; }"
+    },
+    {
+      "id": 16,
+      "title": "リンクの下線を消す",
+      "code": "a { text-decoration: none; }"
+    },
+    {
+      "id": 17,
+      "title": "ボタンの余白",
+      "code": "button { padding: 8px; }"
+    },
+    {
+      "id": 18,
+      "title": "画像の高さ",
+      "code": "img { height: 100px; }"
+    },
+    {
+      "id": 19,
+      "title": "見出しを中央にする",
+      "code": "h2 { text-align: center; }"
+    },
+    {
+      "id": 20,
+      "title": "角を丸くする",
+      "code": ".round { border-radius: 8px; }"
+    },
+    {
+      "id": 21,
+      "title": "赤い文字",
+      "code": ".red { color: red; }"
+    },
+    {
+      "id": 22,
+      "title": "大きな文字",
+      "code": ".large { font-size: 20px; }"
+    },
+    {
+      "id": 23,
+      "title": "幅を指定",
+      "code": ".box { width: 200px; }"
+    },
+    {
+      "id": 24,
+      "title": "要素を隠す",
+      "code": ".hidden { visibility: hidden; }"
+    },
+    {
+      "id": 25,
+      "title": "横並び",
+      "code": ".row { display: flex; }"
+    },
+    {
+      "id": 26,
+      "title": "要素の間隔",
+      "code": ".row { gap: 8px; }"
+    },
+    {
+      "id": 27,
+      "title": "大きな余白",
+      "code": ".card { margin: 16px; }"
+    },
+    {
+      "id": 28,
+      "title": "緑のリスト",
+      "code": "li { color: green; }"
+    },
+    {
+      "id": 29,
+      "title": "入力欄の枠線",
+      "code": "input { border: 1px solid gray; }"
+    },
+    {
+      "id": 30,
+      "title": "中央に配置",
+      "code": ".center { margin: 0 auto; }"
+    },
+    {
+      "id": 31,
+      "title": "見出しの色",
+      "code": "h1 { color: navy; }"
+    },
+    {
+      "id": 32,
+      "title": "行の高さ",
+      "code": "p { line-height: 1.5; }"
+    },
+    {
+      "id": 33,
+      "title": "青い背景",
+      "code": ".button { background: blue; }"
+    },
+    {
+      "id": 34,
+      "title": "全幅",
+      "code": ".wide { width: 100%; }"
+    },
+    {
+      "id": 35,
+      "title": "小さな余白",
+      "code": ".small { padding: 4px; }"
+    },
+    {
+      "id": 36,
+      "title": "アイコンの大きさ",
+      "code": ".icon { font-size: 16px; }"
+    },
+    {
+      "id": 37,
+      "title": "高さを指定",
+      "code": ".box { height: 80px; }"
+    },
+    {
+      "id": 38,
+      "title": "上の余白",
+      "code": ".top { margin-top: 10px; }"
+    },
+    {
+      "id": 39,
+      "title": "下線",
+      "code": ".line { border-bottom: 1px solid gray; }"
+    },
+    {
+      "id": 40,
+      "title": "幅を画面に合わせる",
+      "code": "@media (max-width: 600px) {\n  .box { width: 100%; }\n}"
+    }
+  ],
+  "javascript": [
+    {
+      "id": 1,
+      "title": "文字を表示",
+      "code": "console.log(\"Hello\");"
+    },
+    {
+      "id": 2,
+      "title": "変数を表示",
+      "code": "const name = \"太郎\";\nconsole.log(name);"
+    },
+    {
+      "id": 3,
+      "title": "足し算",
+      "code": "const sum = 2 + 3;\nconsole.log(sum);"
+    },
+    {
+      "id": 4,
+      "title": "配列の最初の値",
+      "code": "const colors = [\"赤\", \"青\"];\nconsole.log(colors[0]);"
+    },
+    {
+      "id": 5,
+      "title": "関数を呼び出す",
+      "code": "function greet() {\n  console.log(\"こんにちは\");\n}\ngreet();"
+    },
+    {
+      "id": 6,
+      "title": "文字を変更",
+      "code": "const title = document.querySelector(\"h1\");\ntitle.textContent = \"完了\";"
+    },
+    {
+      "id": 7,
+      "title": "年齢を判定",
+      "code": "const age = 20;\nif (age >= 18) console.log(\"大人です\");"
+    },
+    {
+      "id": 8,
+      "title": "配列を順番に表示",
+      "code": "const fruits = [\"りんご\", \"みかん\"];\nfruits.forEach((fruit) => console.log(fruit));"
+    },
+    {
+      "id": 9,
+      "title": "数を2倍にする",
+      "code": "const double = (number) => number * 2;\nconsole.log(double(3));"
+    },
+    {
+      "id": 10,
+      "title": "ボタンのクリック",
+      "code": "document.querySelector(\"button\").onclick = () => alert(\"クリック\");"
+    },
+    {
+      "id": 11,
+      "title": "カウントを増やす",
+      "code": "let count = 0;\ncount++;"
+    },
+    {
+      "id": 12,
+      "title": "真偽値を表示",
+      "code": "const isReady = true;\nconsole.log(isReady);"
+    },
+    {
+      "id": 13,
+      "title": "文字を表示",
+      "code": "const city = \"東京\";\nconsole.log(city);"
+    },
+    {
+      "id": 14,
+      "title": "引き算",
+      "code": "console.log(10 - 4);"
+    },
+    {
+      "id": 15,
+      "title": "掛け算",
+      "code": "console.log(3 * 2);"
+    },
+    {
+      "id": 16,
+      "title": "割り算",
+      "code": "console.log(8 / 2);"
+    },
+    {
+      "id": 17,
+      "title": "文字をつなぐ",
+      "code": "const first = \"あ\";\nconst second = \"い\";\nconsole.log(first + second);"
+    },
+    {
+      "id": 18,
+      "title": "配列の長さ",
+      "code": "const items = [\"本\", \"ペン\"];\nconsole.log(items.length);"
+    },
+    {
+      "id": 19,
+      "title": "配列の2番目",
+      "code": "const colors = [\"赤\", \"青\"];\nconsole.log(colors[1]);"
+    },
+    {
+      "id": 20,
+      "title": "数を比べる",
+      "code": "const price = 100;\nconsole.log(price >= 100);"
+    },
+    {
+      "id": 21,
+      "title": "合格を判定",
+      "code": "const score = 80;\nif (score >= 60) console.log(\"合格\");"
+    },
+    {
+      "id": 22,
+      "title": "3回くり返す",
+      "code": "for (let i = 0; i < 3; i++) console.log(i);"
+    },
+    {
+      "id": 23,
+      "title": "足し算の関数",
+      "code": "function add(a, b) { return a + b; }"
+    },
+    {
+      "id": 24,
+      "title": "数を2乗する",
+      "code": "const square = (n) => n * n;"
+    },
+    {
+      "id": 25,
+      "title": "メッセージを表示",
+      "code": "const message = \"こんにちは\";\nalert(message);"
+    },
+    {
+      "id": 26,
+      "title": "段落の文字を変える",
+      "code": "document.querySelector(\"p\").textContent = \"完了\";"
+    },
+    {
+      "id": 27,
+      "title": "文字色を変える",
+      "code": "document.body.style.color = \"blue\";"
+    },
+    {
+      "id": 28,
+      "title": "ボタンを無効にする",
+      "code": "const button = document.querySelector(\"button\");\nbutton.disabled = true;"
+    },
+    {
+      "id": 29,
+      "title": "今日の日付",
+      "code": "const today = new Date();\nconsole.log(today);"
+    },
+    {
+      "id": 30,
+      "title": "オブジェクトの値",
+      "code": "const user = { name: \"花子\" };\nconsole.log(user.name);"
+    },
+    {
+      "id": 31,
+      "title": "配列の3番目",
+      "code": "const numbers = [1, 2, 3];\nconsole.log(numbers[2]);"
+    },
+    {
+      "id": 32,
+      "title": "順番に表示",
+      "code": "console.log(\"A\");\nconsole.log(\"B\");"
+    },
+    {
+      "id": 33,
+      "title": "2つの数を足す",
+      "code": "const a = 5;\nconst b = 2;\nconsole.log(a + b);"
+    },
+    {
+      "id": 34,
+      "title": "偽の値を表示",
+      "code": "const hasTicket = false;\nconsole.log(hasTicket);"
+    },
+    {
+      "id": 35,
+      "title": "あいさつ関数",
+      "code": "function sayHi() { alert(\"Hi\"); }\nsayHi();"
+    },
+    {
+      "id": 36,
+      "title": "大文字に変える",
+      "code": "const text = \"hello\";\nconsole.log(text.toUpperCase());"
+    },
+    {
+      "id": 37,
+      "title": "配列に追加",
+      "code": "const nums = [1, 2];\nnums.push(3);"
+    },
+    {
+      "id": 38,
+      "title": "条件を確認",
+      "code": "if (true) console.log(\"OK\");"
+    },
+    {
+      "id": 39,
+      "title": "数を2倍にする",
+      "code": "const double = (n) => n * 2;\nconsole.log(double(4));"
+    },
+    {
+      "id": 40,
+      "title": "大きい数を表示",
+      "code": "console.log(Math.max(2, 5));"
+    }
+  ],
+  "jquery": [
+    {
+      "id": 1,
+      "title": "文字を変更",
+      "code": "$(\"#title\").text(\"こんにちは\");"
+    },
+    {
+      "id": 2,
+      "title": "要素を隠す",
+      "code": "$(\".box\").hide();"
+    },
+    {
+      "id": 3,
+      "title": "要素を表示",
+      "code": "$(\"#menu\").show();"
+    },
+    {
+      "id": 4,
+      "title": "クリックイベント",
+      "code": "$(\"button\").on(\"click\", function () { alert(\"クリック\"); });"
+    },
+    {
+      "id": 5,
+      "title": "入力値を取得",
+      "code": "const name = $(\"#name\").val();"
+    },
+    {
+      "id": 6,
+      "title": "クラスを追加",
+      "code": "$(\"#item\").addClass(\"active\");"
+    },
+    {
+      "id": 7,
+      "title": "クラスを削除",
+      "code": "$(\"#item\").removeClass(\"active\");"
+    },
+    {
+      "id": 8,
+      "title": "フェードイン",
+      "code": "$(\"#message\").fadeIn();"
+    },
+    {
+      "id": 9,
+      "title": "文字色を変更",
+      "code": "$(\"p\").css(\"color\", \"red\");"
+    },
+    {
+      "id": 10,
+      "title": "リストに項目を追加",
+      "code": "$(\"#list\").append(\"<li>新しい項目</li>\");"
+    },
+    {
+      "id": 11,
+      "title": "要素を隠す",
+      "code": "$( \"#title\" ).hide();"
+    },
+    {
+      "id": 12,
+      "title": "要素を表示",
+      "code": "$( \"#title\" ).show();"
+    },
+    {
+      "id": 13,
+      "title": "表示を切り替える",
+      "code": "$( \".box\" ).toggle();"
+    },
+    {
+      "id": 14,
+      "title": "段落の文字を変える",
+      "code": "$( \"p\" ).text(\"こんにちは\");"
+    },
+    {
+      "id": 15,
+      "title": "入力欄に文字を入れる",
+      "code": "$( \"#name\" ).val(\"花子\");"
+    },
+    {
+      "id": 16,
+      "title": "ボタンにクラスを追加",
+      "code": "$( \"button\" ).addClass(\"active\");"
+    },
+    {
+      "id": 17,
+      "title": "ボタンのクラスを消す",
+      "code": "$( \"button\" ).removeClass(\"active\");"
+    },
+    {
+      "id": 18,
+      "title": "段落を青くする",
+      "code": "$( \"p\" ).css(\"color\", \"blue\");"
+    },
+    {
+      "id": 19,
+      "title": "フェードアウト",
+      "code": "$( \"#menu\" ).fadeOut();"
+    },
+    {
+      "id": 20,
+      "title": "表示を切り替える",
+      "code": "$( \"#menu\" ).fadeToggle();"
+    },
+    {
+      "id": 21,
+      "title": "最初の項目を隠す",
+      "code": "$( \"li\" ).first().hide();"
+    },
+    {
+      "id": 22,
+      "title": "最後の項目を表示",
+      "code": "$( \"li\" ).last().show();"
+    },
+    {
+      "id": 23,
+      "title": "項目にクラスを追加",
+      "code": "$( \"li\" ).addClass(\"red\");"
+    },
+    {
+      "id": 24,
+      "title": "見出しの文字を変える",
+      "code": "$( \"h1\" ).text(\"見出し\");"
+    },
+    {
+      "id": 25,
+      "title": "上へスライド",
+      "code": "$( \"#box\" ).slideUp();"
+    },
+    {
+      "id": 26,
+      "title": "下へスライド",
+      "code": "$( \"#box\" ).slideDown();"
+    },
+    {
+      "id": 27,
+      "title": "中身を消す",
+      "code": "$( \"#box\" ).empty();"
+    },
+    {
+      "id": 28,
+      "title": "要素を削除",
+      "code": "$( \"#box\" ).remove();"
+    },
+    {
+      "id": 29,
+      "title": "リストに追加",
+      "code": "$( \"#list\" ).append(\"<li>本</li>\");"
+    },
+    {
+      "id": 30,
+      "title": "リストの先頭に追加",
+      "code": "$( \"#list\" ).prepend(\"<li>先頭</li>\");"
+    },
+    {
+      "id": 31,
+      "title": "チェックを入れる",
+      "code": "$( \"input\" ).prop(\"checked\", true);"
+    },
+    {
+      "id": 32,
+      "title": "クラスを切り替える",
+      "code": "$( \"#box\" ).toggleClass(\"open\");"
+    },
+    {
+      "id": 33,
+      "title": "段落を隠す",
+      "code": "$( \"p\" ).hide(500);"
+    },
+    {
+      "id": 34,
+      "title": "画像の説明を変える",
+      "code": "$( \"img\" ).attr(\"alt\", \"花\");"
+    },
+    {
+      "id": 35,
+      "title": "数字を表示",
+      "code": "$( \"#count\" ).text(3);"
+    },
+    {
+      "id": 36,
+      "title": "クリックイベント",
+      "code": "$( \"button\" ).on(\"click\", () => alert(\"OK\"));"
+    },
+    {
+      "id": 37,
+      "title": "太字を表示",
+      "code": "$( \"#box\" ).html(\"<b>太字</b>\");"
+    },
+    {
+      "id": 38,
+      "title": "幅を変える",
+      "code": "$( \"#box\" ).width(100);"
+    },
+    {
+      "id": 39,
+      "title": "高さを変える",
+      "code": "$( \"#box\" ).height(50);"
+    },
+    {
+      "id": 40,
+      "title": "準備完了を表示",
+      "code": "$(document).ready(() => console.log(\"準備OK\"));"
+    }
+  ]
+}

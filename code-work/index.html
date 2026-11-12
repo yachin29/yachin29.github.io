@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#020617">
+  <title>Code Work - コードタイピング練習</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased">
+  <div class="min-h-screen">
+    <header class="border-b border-slate-800 bg-slate-900/95">
+      <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-5">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <a href="./" class="flex items-center gap-3 text-white no-underline">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-sky-500/15 text-lg font-bold text-sky-300">&gt;_</span>
+              <span>
+                <span class="block text-lg font-bold tracking-tight">Code Work</span>
+                <span class="block text-xs text-slate-400">コードタイピング練習</span>
+              </span>
+            </a>
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="flex items-center gap-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-2">
+                <span class="text-xs font-semibold tracking-widest text-amber-200">HIGH SCORE</span>
+                <span id="high-score" class="font-mono text-xl font-bold text-amber-300">0 pt</span>
+                <span id="record-badge" class="hidden rounded-full bg-rose-500 px-2 py-1 text-[10px] font-black tracking-wider text-white">NEW RECORD!</span>
+              </div>
+              <button id="theme-toggle" type="button" class="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm font-semibold text-slate-300 transition hover:border-slate-500 hover:text-slate-100" aria-label="ライトモードに切り替え" title="ライトモードに切り替え">
+                <span id="theme-icon" aria-hidden="true">☀</span>
+                <span id="theme-label" class="hidden sm:inline">ライトモード</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p class="mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">Category</p>
+              <nav id="category-tabs" class="flex flex-wrap gap-2" aria-label="カテゴリー">
+                <button data-category="html" class="category-tab rounded-lg border px-4 py-2 text-sm font-semibold transition">HTML</button>
+                <button data-category="css" class="category-tab rounded-lg border px-4 py-2 text-sm font-semibold transition">CSS</button>
+                <button data-category="javascript" class="category-tab rounded-lg border px-4 py-2 text-sm font-semibold transition">JavaScript</button>
+                <button data-category="jquery" class="category-tab rounded-lg border px-4 py-2 text-sm font-semibold transition">jQuery</button>
+              </nav>
+            </div>
+            <div>
+              <p class="mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">Mode</p>
+              <div class="flex gap-2" role="group" aria-label="プレイモード">
+                <button id="practice-mode" class="mode-tab rounded-lg border px-4 py-2 text-sm font-semibold transition">ひたすら練習</button>
+                <button id="attack-mode" class="mode-tab rounded-lg border px-4 py-2 text-sm font-semibold transition">10分ハイスコア</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-x-6 gap-y-2 border-t border-slate-800 pt-3 text-xs text-slate-400" aria-label="カテゴリー別ハイスコア">
+            <span class="font-semibold uppercase tracking-wider text-slate-500">Best scores</span>
+            <span>HTML <b id="best-html" class="ml-1 font-mono text-slate-200">0</b></span>
+            <span>CSS <b id="best-css" class="ml-1 font-mono text-slate-200">0</b></span>
+            <span>JavaScript <b id="best-javascript" class="ml-1 font-mono text-slate-200">0</b></span>
+            <span>jQuery <b id="best-jquery" class="ml-1 font-mono text-slate-200">0</b></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <div id="load-error" class="hidden mb-6 rounded-xl border border-rose-500/40 bg-rose-500/10 p-4 text-sm text-rose-200" role="alert"></div>
+      <section class="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4" aria-label="プレイ状況">
+        <div class="rounded-xl border border-slate-800 bg-slate-900 p-4">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Time</p>
+          <p id="timer" class="mt-1 font-mono text-2xl font-bold text-slate-100">--:--</p>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-900 p-4">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">WPM</p>
+          <p id="wpm" class="mt-1 font-mono text-2xl font-bold text-sky-300">0</p>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-900 p-4">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Accuracy</p>
+          <p id="accuracy" class="mt-1 font-mono text-2xl font-bold text-emerald-300">100%</p>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-900 p-4">
+          <p id="progress-label" class="text-xs font-semibold uppercase tracking-wider text-slate-500">Cleared</p>
+          <p id="progress" class="mt-1 font-mono text-2xl font-bold text-violet-300">0</p>
+        </div>
+        <div class="col-span-2 flex flex-wrap items-center gap-2 rounded-xl border border-slate-800 bg-slate-900 px-4 py-3 text-xs md:col-span-4" aria-label="WPMの目安">
+          <span class="font-semibold text-slate-300">WPMの目安</span>
+          <span class="rounded-md bg-slate-800 px-2 py-1 text-slate-300">〜19 初心者</span>
+          <span class="rounded-md bg-slate-800 px-2 py-1 text-slate-300">20〜39 初級</span>
+          <span class="rounded-md bg-slate-800 px-2 py-1 text-slate-300">40〜59 中級</span>
+          <span class="rounded-md bg-slate-800 px-2 py-1 text-slate-300">60以上 上級</span>
+          <span class="text-slate-500">コード入力の参考値です。</span>
+        </div>
+      </section>
+
+      <section class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl shadow-black/20">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 px-5 py-4 sm:px-6">
+          <div class="min-w-0">
+            <div class="flex flex-wrap items-center gap-2">
+              <span id="category-label" class="rounded-md bg-sky-400/10 px-2 py-1 text-[11px] font-bold uppercase tracking-wider text-sky-300">HTML</span>
+              <span id="problem-count" class="text-xs text-slate-500">問題 -- / --</span>
+              <span id="cleared-mark" class="hidden text-xs font-semibold text-emerald-400">✓ CLEAR</span>
+            </div>
+            <h1 id="problem-title" class="mt-2 truncate text-lg font-bold text-white">問題を読み込み中...</h1>
+          </div>
+          <label class="flex items-center gap-2 text-sm text-slate-400">
+            <span class="whitespace-nowrap">問題を選択</span>
+            <select id="problem-select" class="max-w-[13rem] rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" disabled>
+              <option>読み込み中...</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="space-y-5 p-4 sm:p-6">
+          <div>
+            <div class="mb-2 flex items-center justify-between">
+              <h2 class="text-xs font-bold uppercase tracking-[0.15em] text-slate-500">見本コード</h2>
+              <span class="text-xs text-slate-600">1文字ずつ正確に入力してください</span>
+            </div>
+            <pre class="min-h-48 overflow-auto rounded-xl border border-slate-800 bg-slate-950 p-4 text-base leading-7 text-slate-400 sm:p-5"><code id="code-display" class="font-mono"></code></pre>
+          </div>
+
+          <div>
+            <div class="mb-2 flex items-center justify-between">
+              <h2 class="text-xs font-bold uppercase tracking-[0.15em] text-slate-500">あなたの入力</h2>
+              <span class="text-xs text-slate-600">Tab で半角スペース2つ</span>
+            </div>
+            <textarea id="typing-input" rows="7" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off" placeholder="ここをクリックしてタイピングを開始..." class="block w-full resize-y rounded-xl border border-slate-700 bg-slate-950 p-4 font-mono text-base leading-7 text-slate-100 outline-none transition placeholder:text-slate-600 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 disabled:cursor-not-allowed disabled:opacity-50 sm:p-5" disabled></textarea>
+          </div>
+
+          <div id="attack-controls" class="hidden flex-wrap items-center justify-between gap-3 rounded-xl border border-sky-500/20 bg-sky-500/5 p-4">
+            <p id="attack-hint" class="text-sm text-slate-300">10分間で何問クリアできるか挑戦しましょう。</p>
+            <button id="start-button" class="rounded-lg bg-sky-500 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:ring-offset-2 focus:ring-offset-slate-900 disabled:cursor-not-allowed disabled:opacity-50" disabled>10分チャレンジ開始！</button>
+          </div>
+          <p id="mode-note" class="text-center text-xs text-slate-500">問題を最後まで正確に入力すると、自動で次の問題へ進みます。</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="pointer-events-none fixed inset-x-0 top-6 z-40 flex justify-center px-4 opacity-0 transition-opacity duration-200" aria-live="polite">
+    <div id="toast-message" class="rounded-xl border border-emerald-400/30 bg-emerald-950 px-6 py-3 text-center text-lg font-black text-emerald-300 shadow-2xl"></div>
+  </div>
+
+  <div id="result-modal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto p-4" role="dialog" aria-modal="true" aria-labelledby="result-title">
+    <section class="my-auto w-full max-w-xl rounded-2xl border border-slate-700 bg-slate-900 p-6 shadow-2xl sm:p-8">
+      <div class="text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.25em] text-sky-300">Challenge Complete</p>
+        <h2 id="result-title" class="mt-2 text-2xl font-black text-white">RESULT</h2>
+        <p id="result-category" class="mt-1 text-sm text-slate-400">HTML</p>
+        <p id="result-score" class="mt-5 font-mono text-6xl font-black tracking-tight text-amber-300">0</p>
+        <p class="text-sm font-bold tracking-widest text-amber-200">POINTS</p>
+        <span id="result-rank" class="mt-4 inline-flex rounded-full border border-sky-300/30 bg-sky-300/10 px-5 py-1.5 text-2xl font-black text-sky-200">C RANK</span>
+      </div>
+      <div class="mt-7 grid grid-cols-2 gap-3">
+        <div class="rounded-xl bg-slate-800/70 p-4"><p class="text-xs text-slate-400">HIGH SCORE</p><p id="result-best" class="mt-1 font-mono text-xl font-bold text-amber-300">0 pt</p></div>
+        <div class="rounded-xl bg-slate-800/70 p-4"><p class="text-xs text-slate-400">CLEARED</p><p id="result-cleared" class="mt-1 font-mono text-xl font-bold text-emerald-300">0 問</p></div>
+        <div class="col-span-2 rounded-xl bg-slate-800/70 p-4 text-center"><p class="text-xs text-slate-400">AVERAGE WPM</p><p id="result-wpm" class="mt-1 font-mono text-xl font-bold text-sky-300">0</p></div>
+      </div>
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+        <button id="retry-button" class="flex-1 rounded-lg bg-sky-500 px-4 py-3 text-sm font-bold text-white transition hover:bg-sky-400">もう一度挑戦する</button>
+        <button id="return-practice-button" class="flex-1 rounded-lg border border-slate-600 px-4 py-3 text-sm font-bold text-slate-200 transition hover:bg-slate-800">練習モードへ戻る</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
