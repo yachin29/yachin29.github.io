@@ -25,13 +25,55 @@ body {
   background: rgb(2 6 23 / 85%);
 }
 
+html:has(#emmet-help[open]) {
+  overflow: hidden;
+}
+
+.emmet-dialog {
+  width: min(52rem, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.emmet-dialog::backdrop {
+  background: rgb(2 6 23 / 85%);
+}
+
+.emmet-table th,
+.emmet-table td {
+  padding: 0.75rem 1rem;
+  vertical-align: top;
+}
+
+.emmet-table tbody tr {
+  border-top: 1px solid #334155;
+}
+
+.emmet-table tbody th {
+  color: #7dd3fc;
+  white-space: nowrap;
+}
+
+.emmet-table td {
+  white-space: nowrap;
+}
+
+html[data-theme="light"] .emmet-table tbody tr {
+  border-color: #bfc9d5;
+}
+
+html[data-theme="light"] .emmet-table tbody th {
+  color: #0369a1;
+}
+
 html[data-theme="light"] body {
-  background-color: #e7ebf0;
+  background-color: #f1f5f9;
   color: #0f172a;
 }
 
 html[data-theme="light"] header {
-  background-color: rgb(241 245 249 / 97%);
+  background-color: rgb(255 255 255 / 98%);
 }
 
 html[data-theme="light"] [class~="bg-slate-950"] {
@@ -39,15 +81,15 @@ html[data-theme="light"] [class~="bg-slate-950"] {
 }
 
 html[data-theme="light"] body[class~="bg-slate-950"] {
-  background-color: #e7ebf0;
-}
-
-html[data-theme="light"] [class~="bg-slate-900"] {
   background-color: #f1f5f9;
 }
 
+html[data-theme="light"] [class~="bg-slate-900"] {
+  background-color: #ffffff;
+}
+
 html[data-theme="light"] [class~="bg-slate-900/95"] {
-  background-color: rgb(241 245 249 / 97%);
+  background-color: rgb(255 255 255 / 98%);
 }
 
 html[data-theme="light"] [class~="bg-slate-800"],
@@ -56,16 +98,50 @@ html[data-theme="light"] [class~="bg-slate-800/70"] {
 }
 
 html[data-theme="light"] [class~="bg-emerald-950"] {
-  background-color: #d1fae5;
+  background-color: #dcfce7;
+}
+
+html[data-theme="light"] [class~="bg-sky-500/5"] {
+  background-color: #eff6ff;
+}
+
+html[data-theme="light"] [class~="bg-sky-400/10"],
+html[data-theme="light"] [class~="bg-sky-300/10"] {
+  background-color: #e0f2fe;
+}
+
+html[data-theme="light"] [class~="bg-violet-400/10"] {
+  background-color: #f3e8ff;
+}
+
+html[data-theme="light"] [class~="bg-amber-400/10"] {
+  background-color: #fffbeb;
+}
+
+html[data-theme="light"] [class~="bg-rose-500/10"] {
+  background-color: #fff1f2;
 }
 
 html[data-theme="light"] [class~="border-slate-800"],
 html[data-theme="light"] [class~="border-slate-700"] {
-  border-color: #bfc9d5;
+  border-color: #94a3b8;
 }
 
 html[data-theme="light"] [class~="border-slate-600"] {
-  border-color: #94a3b8;
+  border-color: #64748b;
+}
+
+html[data-theme="light"] [class~="border-sky-400"] {
+  border-color: #0369a1;
+}
+
+html[data-theme="light"] [class~="border-violet-400"] {
+  border-color: #6d28d9;
+}
+
+html[data-theme="light"] [class~="border-amber-400/30"],
+html[data-theme="light"] [class~="border-amber-300/30"] {
+  border-color: #b45309;
 }
 
 html[data-theme="light"] [class~="text-white"],
@@ -78,33 +154,33 @@ html[data-theme="light"] [class~="text-slate-200"] {
 }
 
 html[data-theme="light"] [class~="text-slate-300"] {
-  color: #334155;
+  color: #1e293b;
 }
 
 html[data-theme="light"] [class~="text-slate-400"] {
-  color: #475569;
+  color: #334155;
 }
 
 html[data-theme="light"] [class~="text-slate-500"],
 html[data-theme="light"] [class~="text-slate-600"] {
-  color: #526277;
+  color: #475569;
 }
 
 html[data-theme="light"] [class~="text-sky-200"] {
-  color: #075985;
+  color: #0c4a6e;
 }
 
 html[data-theme="light"] [class~="text-sky-300"] {
-  color: #0369a1;
+  color: #075985;
 }
 
 html[data-theme="light"] [class~="text-emerald-300"],
 html[data-theme="light"] [class~="text-emerald-400"] {
-  color: #047857;
+  color: #065f46;
 }
 
 html[data-theme="light"] [class~="text-amber-200"] {
-  color: #92400e;
+  color: #78350f;
 }
 
 html[data-theme="light"] [class~="text-amber-100"] {
@@ -112,23 +188,33 @@ html[data-theme="light"] [class~="text-amber-100"] {
 }
 
 html[data-theme="light"] [class~="text-amber-300"] {
-  color: #b45309;
+  color: #92400e;
 }
 
 html[data-theme="light"] [class~="text-violet-300"] {
-  color: #6d28d9;
+  color: #5b21b6;
 }
 
 html[data-theme="light"] [class~="text-violet-200"] {
-  color: #6b21a8;
+  color: #5b21b6;
 }
 
 html[data-theme="light"] [class~="text-rose-200"] {
   color: #9f1239;
 }
 
+html[data-theme="light"] [class~="text-amber-400/60"] {
+  color: #92400e;
+}
+
+html[data-theme="light"] kbd {
+  background-color: #ffffff;
+  border-color: #b45309;
+  color: #78350f;
+}
+
 html[data-theme="light"] [class~="placeholder:text-slate-600"]::placeholder {
-  color: #526277;
+  color: #475569;
 }
 
 html[data-theme="light"] [class~="hover:bg-slate-800"]:hover {
@@ -143,8 +229,26 @@ html[data-theme="light"] .modal-backdrop {
   background: rgb(15 23 42 / 72%);
 }
 
+html[data-theme="light"] .emmet-dialog::backdrop {
+  background: rgb(15 23 42 / 72%);
+}
+
 html[data-theme="light"] #record-badge,
 html[data-theme="light"] #start-button,
 html[data-theme="light"] #retry-button {
   color: #ffffff;
+}
+
+html[data-theme="light"] #record-badge {
+  background-color: #be123c;
+}
+
+html[data-theme="light"] #start-button,
+html[data-theme="light"] #retry-button {
+  background-color: #075985;
+}
+
+html[data-theme="light"] #start-button:hover,
+html[data-theme="light"] #retry-button:hover {
+  background-color: #0c4a6e;
 }

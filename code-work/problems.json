@@ -33,7 +33,7 @@
     {
       "id": 7,
       "title": "入力欄",
-      "code": "<label>名前 <input></label>"
+      "code": "<label>名前<input></label>"
     },
     {
       "id": 8,
@@ -47,8 +47,8 @@
     },
     {
       "id": 10,
-      "title": "HTMLの基本",
-      "code": "<!doctype html>\n<html lang=\"ja\">\n</html>"
+      "title": "お知らせカード",
+      "code": "<div class=\"card\">\n  <h2>お知らせ</h2>\n  <p>営業時間を更新しました。</p>\n</div>"
     },
     {
       "id": 11,
@@ -152,53 +152,153 @@
     },
     {
       "id": 31,
-      "title": "空の領域",
-      "code": "<div id=\"app\"></div>"
+      "title": "別タブで開くリンク",
+      "code": "<a href=\"https://example.com\" target=\"_blank\" rel=\"noopener\">公式サイト</a>"
     },
     {
       "id": 32,
-      "title": "説明付きテキスト",
-      "code": "<p title=\"説明\">ポイント</p>"
+      "title": "クラス付きセクション",
+      "code": "<section class=\"news\">\n  <h2>お知らせ</h2>\n  <p>新しい記事を公開しました。</p>\n</section>"
     },
     {
       "id": 33,
-      "title": "閉じるボタン",
-      "code": "<button type=\"button\">閉じる</button>"
+      "title": "画像付きリンク",
+      "code": "<a href=\"/gallery\">\n  <img src=\"gallery.jpg\" alt=\"写真ギャラリー\">\n  <span>写真を見る</span>\n</a>"
     },
     {
       "id": 34,
-      "title": "メールリンク",
-      "code": "<a href=\"mailto:hi@example.com\">連絡</a>"
+      "title": "リンク付きナビゲーション",
+      "code": "<nav aria-label=\"メインメニュー\">\n  <ul>\n    <li><a href=\"/\">ホーム</a></li>\n    <li><a href=\"/about\">サイトについて</a></li>\n  </ul>\n</nav>"
     },
     {
       "id": 35,
-      "title": "色のリスト",
-      "code": "<ul><li>赤</li><li>青</li></ul>"
+      "title": "複数項目のリスト",
+      "code": "<ul class=\"features\">\n  <li>送料無料</li>\n  <li>翌日発送</li>\n  <li>返品可能</li>\n</ul>"
     },
     {
       "id": 36,
-      "title": "用語リスト",
-      "code": "<dl><dt>色</dt><dd>赤</dd></dl>"
+      "title": "キーワード検索フォーム",
+      "code": "<form action=\"/search\" method=\"get\">\n  <label for=\"keyword\">キーワード</label>\n  <input id=\"keyword\" name=\"q\" type=\"search\" placeholder=\"商品を検索\">\n  <button type=\"submit\">検索</button>\n</form>"
     },
     {
       "id": 37,
-      "title": "時刻",
-      "code": "<time>12:00</time>"
+      "title": "選択肢のある入力欄",
+      "code": "<label for=\"category\">カテゴリー</label>\n<select id=\"category\" name=\"category\">\n  <option value=\"\">選択してください</option>\n  <option value=\"book\">本</option>\n  <option value=\"music\">音楽</option>\n</select>"
     },
     {
       "id": 38,
-      "title": "リンク付き見出し",
-      "code": "<h2><a href=\"/\">ホーム</a></h2>"
+      "title": "複数の用語と説明",
+      "code": "<dl>\n  <dt>HTML</dt>\n  <dd>Webページの構造を作る言語</dd>\n  <dt>CSS</dt>\n  <dd>Webページの見た目を整える言語</dd>\n</dl>"
     },
     {
       "id": 39,
-      "title": "小さな注記",
-      "code": "<small>注記</small>"
+      "title": "著者情報付きの記事",
+      "code": "<article>\n  <h2>おすすめの本</h2>\n  <p>初心者向けの一冊を紹介します。</p>\n  <footer><small>著者: 山田</small></footer>\n</article>"
     },
     {
       "id": 40,
-      "title": "改行",
-      "code": "上の行<br>下の行"
+      "title": "カード形式の商品紹介",
+      "code": "<article class=\"card\">\n  <img src=\"mug.jpg\" alt=\"白いマグカップ\">\n  <h2>マグカップ</h2>\n  <p>毎日使えるシンプルなカップです。</p>\n  <a href=\"/products/mug\">商品詳細</a>\n</article>"
+    },
+    {
+      "id": 41,
+      "title": "プロフィールカード",
+      "code": "<article class=\"profile\">\n  <img src=\"avatar.jpg\" alt=\"山田花子のプロフィール写真\">\n  <h2>山田 花子</h2>\n  <p>Webデザイナー</p>\n</article>"
+    },
+    {
+      "id": 42,
+      "title": "複数のナビゲーション項目",
+      "code": "<nav aria-label=\"サービス\">\n  <a href=\"/plans\">料金プラン</a>\n  <a href=\"/features\">機能一覧</a>\n  <a href=\"/help\">ヘルプ</a>\n</nav>"
+    },
+    {
+      "id": 43,
+      "title": "見出し付きの注意書き",
+      "code": "<aside class=\"notice\">\n  <h2>ご注意ください</h2>\n  <p>お申し込みの前に利用規約をご確認ください。</p>\n  <a href=\"/terms\">利用規約を見る</a>\n</aside>"
+    },
+    {
+      "id": 44,
+      "title": "ラベル付きチェック項目",
+      "code": "<form>\n  <label>\n    <input type=\"checkbox\" name=\"newsletter\" value=\"yes\">\n    お知らせメールを受け取る\n  </label>\n  <button type=\"submit\">設定を保存</button>\n</form>"
+    },
+    {
+      "id": 45,
+      "title": "複数項目のドロップダウン",
+      "code": "<label for=\"plan\">プラン</label>\n<select id=\"plan\" name=\"plan\" required>\n  <option value=\"\">選択してください</option>\n  <option value=\"basic\">ベーシック</option>\n  <option value=\"pro\">プロ</option>\n</select>"
+    },
+    {
+      "id": 46,
+      "title": "画像とキャプション",
+      "code": "<figure class=\"photo\">\n  <img src=\"park.jpg\" alt=\"緑に囲まれた公園\">\n  <figcaption>市内で人気の公園</figcaption>\n</figure>"
+    },
+    {
+      "id": 47,
+      "title": "引用元付きの引用",
+      "code": "<figure>\n  <blockquote>\n    <p>学び続けることが、成長につながります。</p>\n  </blockquote>\n  <figcaption>— <cite>学習ノート</cite></figcaption>\n</figure>"
+    },
+    {
+      "id": 48,
+      "title": "連絡先の一覧",
+      "code": "<address>\n  サンプル株式会社<br>\n  <a href=\"mailto:info@example.com\">info@example.com</a><br>\n  <a href=\"tel:0312345678\">03-1234-5678</a>\n</address>"
+    },
+    {
+      "id": 49,
+      "title": "進捗状況の表示",
+      "code": "<label for=\"upload\">アップロード進捗</label>\n<progress id=\"upload\" value=\"70\" max=\"100\">70%</progress>"
+    },
+    {
+      "id": 50,
+      "title": "料金の比較表",
+      "code": "<table>\n  <tr><th>プラン</th><th>月額</th></tr>\n  <tr><td>ベーシック</td><td>500円</td></tr>\n  <tr><td>プロ</td><td>1,000円</td></tr>\n</table>"
+    },
+    {
+      "id": 51,
+      "title": "セマンティックなページ構造",
+      "code": "<header>\n  <nav aria-label=\"メインナビゲーション\">\n    <a href=\"/\">ホーム</a>\n  </nav>\n</header>\n<main>\n  <article>\n    <h1>お知らせ</h1>\n    <p>新しい記事を公開しました。</p>\n  </article>\n</main>"
+    },
+    {
+      "id": 52,
+      "title": "入力しやすい問い合わせフォーム",
+      "code": "<form action=\"/contact\" method=\"post\">\n  <label for=\"email\">メールアドレス</label>\n  <input id=\"email\" name=\"email\" type=\"email\" autocomplete=\"email\" required>\n  <button type=\"submit\">送信</button>\n</form>"
+    },
+    {
+      "id": 53,
+      "title": "折りたたみ式の詳細説明",
+      "code": "<details>\n  <summary>配送について</summary>\n  <p>通常、3営業日以内に発送します。</p>\n</details>"
+    },
+    {
+      "id": 54,
+      "title": "キャプション付き画像",
+      "code": "<figure>\n  <img src=\"mountain.jpg\" alt=\"雪の積もった山と湖\">\n  <figcaption>秋の山を湖畔から撮影</figcaption>\n</figure>"
+    },
+    {
+      "id": 55,
+      "title": "見出し付きのデータ表",
+      "code": "<table>\n  <thead>\n    <tr><th scope=\"col\">商品</th><th scope=\"col\">価格</th></tr>\n  </thead>\n  <tbody>\n    <tr><th scope=\"row\">ノート</th><td>300円</td></tr>\n  </tbody>\n</table>"
+    },
+    {
+      "id": 56,
+      "title": "選択肢をまとめたフォーム",
+      "code": "<fieldset>\n  <legend>希望する連絡方法</legend>\n  <label><input type=\"radio\" name=\"contact\" value=\"email\" checked> メール</label>\n  <label><input type=\"radio\" name=\"contact\" value=\"phone\"> 電話</label>\n</fieldset>"
+    },
+    {
+      "id": 57,
+      "title": "画面幅に応じた画像",
+      "code": "<picture>\n  <source srcset=\"banner-wide.webp\" media=\"(min-width: 800px)\">\n  <source srcset=\"banner-small.webp\" type=\"image/webp\">\n  <img src=\"banner.jpg\" alt=\"新商品のキャンペーン\">\n</picture>"
+    },
+    {
+      "id": 58,
+      "title": "再生操作付きの動画",
+      "code": "<video controls width=\"640\" poster=\"preview.jpg\">\n  <source src=\"movie.mp4\" type=\"video/mp4\">\n  <track src=\"captions-ja.vtt\" kind=\"captions\" srclang=\"ja\" label=\"日本語\">\n  お使いのブラウザーは動画に対応していません。\n</video>"
+    },
+    {
+      "id": 59,
+      "title": "公開日時付きの記事",
+      "code": "<article>\n  <h2>春の新メニュー</h2>\n  <p>季節限定メニューを紹介します。</p>\n  <p>公開日: <time datetime=\"2026-03-01\">2026年3月1日</time></p>\n</article>"
+    },
+    {
+      "id": 60,
+      "title": "必須項目のある登録フォーム",
+      "code": "<form>\n  <label for=\"username\">ユーザー名</label>\n  <input id=\"username\" name=\"username\" minlength=\"3\" maxlength=\"20\" required>\n  <label for=\"password\">パスワード</label>\n  <input id=\"password\" name=\"password\" type=\"password\" minlength=\"8\" required>\n  <button type=\"submit\">登録</button>\n</form>"
     }
   ],
   "css": [

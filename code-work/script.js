@@ -9,6 +9,7 @@
       };
       const SCORE_KEY = "codeDrill_highScores";
       const CLEARED_KEY = "codeDrill_cleared";
+      const CLEARED_HTML_VERSION = 5;
       const THEME_KEY = "codeDrill_theme";
       const CHALLENGE_SECONDS = 600;
       const $ = (selector) => document.querySelector(selector);
@@ -19,6 +20,9 @@
         themeToggle: $("#theme-toggle"),
         themeIcon: $("#theme-icon"),
         themeLabel: $("#theme-label"),
+        emmetHelpButton: $("#emmet-help-button"),
+        emmetHelp: $("#emmet-help"),
+        emmetHelpClose: $("#emmet-help-close"),
         highScore: $("#high-score"),
         recordBadge: $("#record-badge"),
         timer: $("#timer"),
@@ -105,6 +109,37 @@
         const ids = clearedProblems[key];
         return Array.isArray(ids) ? ids : [];
       }
+
+      function migrateHtmlClearedIds() {
+        if (clearedProblems.htmlDifficultyVersion === CLEARED_HTML_VERSION) return;
+        let version = Number.isInteger(clearedProblems.htmlDifficultyVersion)
+          ? clearedProblems.htmlDifficultyVersion
+          : 1;
+        let ids = clearedIds("html");
+        if (version < 2) {
+          ids = ids.map((id) => Number.isInteger(id) && id >= 41 && id <= 50 ? id + 10 : id);
+          version = 2;
+        }
+        if (version < 3) {
+          ids = ids
+            .filter((id) => !Number.isInteger(id) || id < 31 || id > 40)
+            .map((id) => Number.isInteger(id) && id >= 41 && id <= 50 ? id - 10 : id);
+          version = 3;
+        }
+        if (version < 4) {
+          ids = ids.filter((id) => id !== 10);
+          version = 4;
+        }
+        if (version < 5) {
+          ids = ids.filter((id) => id !== 10);
+          version = 5;
+        }
+        clearedProblems.html = [...new Set(ids)];
+        clearedProblems.htmlDifficultyVersion = version;
+        saveStoredObject(CLEARED_KEY, clearedProblems);
+      }
+
+      migrateHtmlClearedIds();
 
       function showError(message) {
         elements.loadError.textContent = message;
@@ -442,6 +477,7 @@
         $("#result-cleared").textContent = `${clearedInChallenge} 問`;
         $("#result-wpm").textContent = String(averageWpm);
         $("#result-rank").textContent = `${rank} RANK`;
+        if (elements.emmetHelp.open) elements.emmetHelp.close();
         elements.resultModal.classList.remove("hidden");
         elements.resultModal.classList.add("flex");
         $("#retry-button").focus();
@@ -461,18 +497,93 @@
         const nextTheme = document.documentElement.dataset.theme === "light" ? "dark" : "light";
         applyTheme(nextTheme, true);
       });
+      elements.emmetHelpButton.addEventListener("click", () => {
+        elements.emmetHelp.showModal();
+        elements.emmetHelpClose.focus();
+      });
+      elements.emmetHelpClose.addEventListener("click", () => elements.emmetHelp.close());
+      elements.emmetHelp.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          event.preventDefault();
+          elements.emmetHelp.close();
+        }
+      });
       elements.problemSelect.addEventListener("change", () => {
         if (!challengeActive) changeProblem(Number(elements.problemSelect.value));
       });
+
+      function htmlExpansionCursor(expanded) {
+        const element = /(<([a-z][\w:.-]*)\b(?:[^>"']|"[^"]*"|'[^']*')*>)([^<]*)<\/\2\s*>/gi;
+        let firstContent = null;
+        let match;
+        while ((match = element.exec(expanded))) {
+          const contentStart = match.index + match[1].length;
+          if (firstContent === null) firstContent = contentStart;
+          if (!match[3].trim()) {
+            const lastNewline = match[3].lastIndexOf("\n");
+            return contentStart + Math.max(lastNewline, 0);
+          }
+        }
+        return firstContent ?? expanded.length;
+      }
+
       elements.input.addEventListener("input", handleInput);
       elements.input.addEventListener("keydown", (event) => {
-        if (event.key !== "Tab" || elements.input.disabled) return;
-        event.preventDefault();
+        const isTab = event.key === "Tab";
+        const isEnter = event.key === "Enter" && !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey;
+        if ((!isTab && !isEnter) || elements.input.disabled || event.isComposing) return;
         const input = elements.input;
         const start = input.selectionStart;
         const end = input.selectionEnd;
-        input.setRangeText("  ", start, end, "end");
-        input.dispatchEvent(new Event("input", { bubbles: true }));
+        if (start === end && (category === "html" || category === "css") && typeof window.emmet?.expand === "function") {
+          const lineStart = input.value.lastIndexOf("\n", start - 1) + 1;
+          const line = input.value.slice(lineStart, start);
+          let abbreviationStart = 0;
+          let nesting = 0;
+          let quote = "";
+          for (let index = 0; index < line.length; index += 1) {
+            const char = line[index];
+            if (category === "html") {
+              if (quote) {
+                if (char === quote && line[index - 1] !== "\\") quote = "";
+              } else if (nesting && (char === '"' || char === "'")) {
+                quote = char;
+              } else if ("[{(".includes(char)) {
+                nesting += 1;
+              } else if ("]})".includes(char) && nesting) {
+                nesting -= 1;
+              }
+            }
+            if (!nesting && !quote && /\s/.test(char)) abbreviationStart = index + 1;
+          }
+          const abbreviation = line.slice(abbreviationStart);
+          if (abbreviation && !abbreviation.includes("<")) {
+            let expanded;
+            try {
+              expanded = window.emmet.expand(abbreviation, { syntax: category });
+            } catch (error) {
+              // Invalid abbreviations fall back to indentation.
+            }
+            if (expanded && !(category === "css" && /:\s*;/.test(expanded))) {
+              const indent = line.match(/^[ \t]*/)[0];
+              expanded = expanded.replace(/\t/g, "  ").replace(/\n/g, `\n${indent}`);
+              event.preventDefault();
+              const replacementStart = lineStart + abbreviationStart;
+              input.setRangeText(expanded, replacementStart, end, "end");
+              if (category === "html") {
+                const cursor = replacementStart + htmlExpansionCursor(expanded);
+                input.setSelectionRange(cursor, cursor);
+              }
+              input.dispatchEvent(new Event("input", { bubbles: true }));
+              return;
+            }
+          }
+        }
+        if (isTab) {
+          event.preventDefault();
+          input.setRangeText("  ", start, end, "end");
+          input.dispatchEvent(new Event("input", { bubbles: true }));
+        }
       });
       elements.input.addEventListener("paste", (event) => event.preventDefault());
       elements.input.addEventListener("drop", (event) => event.preventDefault());
@@ -491,6 +602,10 @@
 
       async function initialize() {
         applyTheme(loadTheme());
+        if (!window.emmet || typeof window.emmet.expand !== "function") {
+          console.error("Emmetの読み込みに失敗しました。");
+          showError("Emmetを読み込めませんでした。Tabキーでは半角スペースを挿入します。ネットワーク接続をご確認ください。");
+        }
         const params = new URLSearchParams(window.location.search);
         if (CATEGORY_NAMES[params.get("category")]) category = params.get("category");
         if (params.get("mode") === "attack") mode = "attack";
