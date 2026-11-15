@@ -11,7 +11,7 @@
       const CLEARED_KEY = "codeDrill_cleared";
       const CLEARED_HTML_VERSION = 5;
       const THEME_KEY = "codeDrill_theme";
-      const CHALLENGE_SECONDS = 600;
+      const CHALLENGE_SECONDS = 300;
       const $ = (selector) => document.querySelector(selector);
       const elements = {
         categoryTabs: [...document.querySelectorAll(".category-tab")],
@@ -314,8 +314,8 @@
           elements.startButton.textContent = "チャレンジ中...";
           elements.startButton.disabled = true;
         } else {
-          elements.attackHint.textContent = "10分間で何問クリアできるか挑戦しましょう。";
-          elements.startButton.textContent = "10分チャレンジ開始！";
+          elements.attackHint.textContent = "5分間で何問クリアできるか挑戦しましょう。";
+          elements.startButton.textContent = "5分チャレンジ開始！";
           elements.startButton.disabled = currentProblems().length === 0;
         }
       }
