@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Web制作やコーディングに役立つ、ブラウザーで使える自作ツール集です。"
+    />
+    <meta name="theme-color" content="#f8fafc" />
+    <title>Web Dev Tools | yachin29 Web Creator Suite</title>
+    <script>
+      const savedTheme = localStorage.getItem("web-tools-theme");
+      const isDark = savedTheme === "dark";
+      document.documentElement.classList.toggle("dark", isDark);
+      document.querySelector('meta[name="theme-color"]').content = isDark
+        ? "#020617"
+        : "#f8fafc";
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+    <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+      <header class="mb-10">
+        <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <p class="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400">yachin29 Web Creator Suite</p>
+            <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Web Dev Tools</h1>
+            <p class="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400 sm:text-base">
+              Web制作やコーディングの実務に役立つ、ブラウザーで使えるツール集です。
+              ツールを検索して、すぐに作業を始められます。
+            </p>
+          </div>
+          <button
+            id="theme-toggle"
+            type="button"
+            class="shrink-0 self-start rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-slate-700 dark:text-slate-200 dark:hover:text-white"
+            aria-pressed="false"
+          >
+            ダークモードに切り替え
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section aria-labelledby="tools-heading">
+          <div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 id="tools-heading" class="text-xl font-semibold tracking-tight">ツール一覧</h2>
+              <p id="results-count" class="mt-1 text-sm text-slate-600 dark:text-slate-400" aria-live="polite"></p>
+            </div>
+            <label class="relative block w-full sm:max-w-sm">
+              <span class="sr-only">ツールを検索</span>
+              <svg class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m16 16 4 4"></path>
+              </svg>
+              <input
+                id="search-input"
+                type="search"
+                placeholder="ツール名・キーワードで検索"
+                class="w-full rounded-xl border border-slate-300 bg-white py-3 pl-10 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+                autocomplete="off"
+              />
+            </label>
+          </div>
+
+          <div class="mb-6 flex flex-wrap gap-2" role="group" aria-label="カテゴリーで絞り込み">
+            <button type="button" data-category="all" class="category-filter rounded-full border px-4 py-2 text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-pressed="true">すべて</button>
+            <button type="button" data-category="css" class="category-filter rounded-full border px-4 py-2 text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-pressed="false">CSS</button>
+            <button type="button" data-category="image" class="category-filter rounded-full border px-4 py-2 text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-pressed="false">画像</button>
+            <button type="button" data-category="practice" class="category-filter rounded-full border px-4 py-2 text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-pressed="false">練習</button>
+          </div>
+
+          <div id="tool-list" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+          <div id="empty-state" class="hidden rounded-2xl border border-dashed border-slate-300 px-5 py-12 text-center text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400">
+            <p>条件に一致するツールがありません。検索語やカテゴリーを変更してください。</p>
+            <button
+              id="reset-filters"
+              type="button"
+              class="mt-4 rounded-lg border border-slate-300 px-4 py-2 font-medium text-slate-700 transition hover:border-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-slate-700 dark:text-slate-200 dark:hover:text-white"
+            >
+              絞り込みをリセット
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="mt-12 border-t border-slate-200 pt-5 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-500">
+        <p>Web Dev Tools <span aria-hidden="true">·</span> Web制作を、もっとスムーズに。</p>
+      </footer>
+    </div>
+  </body>
+</html>

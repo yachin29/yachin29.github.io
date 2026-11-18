@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="サイズとビューポート幅から CSS clamp() を計算するツール"
+    />
+    <title>Min-Max clamp() Calculator</title>
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      const savedTheme = localStorage.getItem("web-tools-theme");
+      const isDark = savedTheme === "dark";
+      document.documentElement.classList.toggle("dark", isDark);
+      document.querySelector('meta[name="theme-color"]').content = isDark
+        ? "#020617"
+        : "#f8fafc";
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+    <div class="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
+      <header class="mb-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-col gap-4">
+          <a href="../" class="self-start text-sm font-medium text-indigo-700 transition hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200">← Web Dev Tools</a>
+          <div>
+            <p class="mb-2 text-sm font-medium text-indigo-400">CSS RESPONSIVE TOOL</p>
+            <h1 class="text-2xl font-bold tracking-tight sm:text-3xl">Min-Max clamp() Calculator</h1>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">文字サイズと画面幅の最小・最大値を入力すると、画面幅に応じて文字サイズが変化するCSSを自動生成します。</p>
+          </div>
+        </div>
+        <button id="theme-toggle" type="button" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-indigo-500 hover:text-indigo-700 dark:border-slate-700 dark:text-slate-200 dark:hover:text-white" aria-pressed="false">
+          ダークモードに切り替え
+        </button>
+      </header>
+
+      <main class="space-y-6">
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-xl shadow-black/10 sm:p-7 dark:border-slate-800 dark:bg-slate-900" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading" class="mb-6 text-lg font-semibold">サイズ範囲とビューポート</h2>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="block rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
+              <span class="mb-3 flex items-center justify-between text-sm font-medium text-slate-700 dark:text-slate-300">
+                <span>最小サイズ <span class="text-slate-500">(Min)</span></span>
+                <span id="min-rem" class="font-mono text-indigo-700 dark:text-indigo-300">1rem</span>
+              </span>
+              <span class="flex items-center gap-3">
+                <input id="min-size" class="w-full min-w-0 bg-transparent font-mono text-xl text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white" type="number" step="any" value="16" aria-label="最小サイズ px" />
+                <span class="text-sm text-slate-600 dark:text-slate-500">px</span>
+              </span>
+            </label>
+            <label class="block rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
+              <span class="mb-3 flex items-center justify-between text-sm font-medium text-slate-700 dark:text-slate-300">
+                <span>最大サイズ <span class="text-slate-500">(Max)</span></span>
+                <span id="max-rem" class="font-mono text-indigo-700 dark:text-indigo-300">1.5rem</span>
+              </span>
+              <span class="flex items-center gap-3">
+                <input id="max-size" class="w-full min-w-0 bg-transparent font-mono text-xl text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white" type="number" step="any" value="24" aria-label="最大サイズ px" />
+                <span class="text-sm text-slate-600 dark:text-slate-500">px</span>
+              </span>
+            </label>
+            <label class="block rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
+              <span class="mb-3 flex items-center justify-between text-sm font-medium text-slate-700 dark:text-slate-300">
+                <span>最小画面幅 <span class="text-slate-500">(Min VW)</span></span>
+                <span id="min-vw-rem" class="font-mono text-indigo-700 dark:text-indigo-300">25rem</span>
+              </span>
+              <span class="flex items-center gap-3">
+                <input id="min-vw" class="w-full min-w-0 bg-transparent font-mono text-xl text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white" type="number" min="1" step="any" value="400" aria-label="最小画面幅 px" />
+                <span class="text-sm text-slate-600 dark:text-slate-500">px</span>
+              </span>
+            </label>
+            <label class="block rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
+              <span class="mb-3 flex items-center justify-between text-sm font-medium text-slate-700 dark:text-slate-300">
+                <span>最大画面幅 <span class="text-slate-500">(Max VW)</span></span>
+                <span id="max-vw-rem" class="font-mono text-indigo-700 dark:text-indigo-300">75rem</span>
+              </span>
+              <span class="flex items-center gap-3">
+                <input id="max-vw" class="w-full min-w-0 bg-transparent font-mono text-xl text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white" type="number" min="1" step="any" value="1200" aria-label="最大画面幅 px" />
+                <span class="text-sm text-slate-600 dark:text-slate-500">px</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="mt-5 flex flex-wrap items-center gap-2" aria-label="画面幅プリセット">
+            <span class="mr-1 text-xs text-slate-600 dark:text-slate-500">プリセット:</span>
+            <button type="button" data-viewport="375,1440" class="rounded-full border border-slate-300 px-3 py-1.5 text-xs text-slate-700 transition hover:border-indigo-500 hover:text-indigo-700 dark:border-slate-700 dark:text-slate-300 dark:hover:text-white">375 / 1440</button>
+            <button type="button" data-viewport="400,1200" class="rounded-full border border-slate-300 px-3 py-1.5 text-xs text-slate-700 transition hover:border-indigo-500 hover:text-indigo-700 dark:border-slate-700 dark:text-slate-300 dark:hover:text-white">400 / 1200</button>
+            <button type="button" data-viewport="360,1280" class="rounded-full border border-slate-300 px-3 py-1.5 text-xs text-slate-700 transition hover:border-indigo-500 hover:text-indigo-700 dark:border-slate-700 dark:text-slate-300 dark:hover:text-white">360 / 1280</button>
+          </div>
+
+          <div class="mt-7">
+            <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+              <h2 class="text-sm font-semibold text-slate-800 dark:text-slate-200">生成コード</h2>
+              <label class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                <input id="include-property" type="checkbox" class="h-4 w-4 rounded border-slate-300 bg-white text-indigo-500 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-800" />
+                font-size: を付ける
+              </label>
+            </div>
+            <div class="flex min-h-16 items-center gap-3 rounded-xl border border-slate-300 bg-slate-100 p-3 sm:p-4 dark:border-slate-700 dark:bg-slate-950">
+              <code id="css-output" class="min-w-0 flex-1 break-all font-mono text-sm leading-6 text-emerald-700 dark:text-emerald-300" aria-live="polite"></code>
+              <button id="copy-css" type="button" class="shrink-0 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-50">コピー</button>
+            </div>
+            <p id="calculation-error" class="mt-2 min-h-5 text-sm text-rose-600 dark:text-rose-400" role="status"></p>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-xl shadow-black/10 sm:p-7 dark:border-slate-800 dark:bg-slate-900" aria-labelledby="preview-heading">
+          <div class="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 id="preview-heading" class="text-lg font-semibold">リアルタイム挙動プレビュー</h2>
+              <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">スライダーで画面幅をシミュレーションします。</p>
+            </div>
+            <output id="preview-result" class="font-mono text-sm text-indigo-700 dark:text-indigo-300" aria-live="polite"></output>
+          </div>
+          <input id="preview-width" class="w-full cursor-pointer accent-indigo-500" type="range" min="320" max="1600" value="800" aria-label="プレビュー画面幅" />
+          <div class="mt-1 flex justify-between font-mono text-xs text-slate-600 dark:text-slate-500"><span>320px</span><span>1600px</span></div>
+          <div class="mt-5 min-h-28 overflow-auto rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-950">
+            <p id="sample-text" class="break-words text-slate-900 dark:text-slate-100" contenteditable="true" spellcheck="false" aria-label="プレビュー用サンプルテキスト">あいうえお Sample Text 123</p>
+          </div>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-500">サンプルテキストは直接編集できます。</p>
+        </section>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-xl shadow-black/10 sm:p-7 dark:border-slate-800 dark:bg-slate-900" aria-labelledby="converter-heading">
+          <h2 id="converter-heading" class="mb-4 text-lg font-semibold">px ⇄ rem クイック変換</h2>
+          <div class="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+            <label class="flex flex-1 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/60">
+              <input id="convert-px" class="w-full min-w-0 bg-transparent font-mono text-lg text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white" type="number" step="any" value="16" aria-label="pxの値" />
+              <span class="text-sm text-slate-600 dark:text-slate-500">px</span>
+            </label>
+            <span class="text-center text-slate-600 dark:text-slate-500" aria-hidden="true">⇄</span>
+            <label class="flex flex-1 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/60">
+              <input id="convert-rem" class="w-full min-w-0 bg-transparent font-mono text-lg text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white" type="number" step="any" value="1" aria-label="remの値" />
+              <span class="text-sm text-slate-600 dark:text-slate-500">rem</span>
+            </label>
+            <button id="copy-rem" type="button" class="rounded-lg border border-slate-300 px-4 py-3 text-sm font-medium text-slate-800 transition hover:border-indigo-500 hover:text-indigo-700 dark:border-slate-700 dark:text-slate-200 dark:hover:text-white">remをコピー</button>
+          </div>
+          <p id="converter-error" class="mt-2 min-h-5 text-sm text-rose-600 dark:text-rose-400" role="status"></p>
+        </section>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-xl shadow-black/10 sm:p-7 dark:border-slate-800 dark:bg-slate-900" aria-labelledby="units-guide-heading">
+          <h2 id="units-guide-heading" class="mb-5 text-lg font-semibold">rem と clamp() を使うメリット</h2>
+          <div class="space-y-5 text-sm leading-7 text-slate-700 dark:text-slate-300">
+            <div>
+              <h3 class="font-semibold text-slate-900 dark:text-slate-100">アクセシビリティに配慮したサイズ設定</h3>
+              <p class="mt-1">rem はルート要素の文字サイズを基準にする相対単位です。文字サイズや余白を rem で指定すると、利用者の文字サイズ設定に合わせて拡大しやすくなります。ルートの文字サイズを固定値で上書きせず、利用者の設定を尊重することが大切です。</p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-900 dark:text-slate-100">ブラウザーのズームと併用する</h3>
+              <p class="mt-1">通常のページズームでは px も rem も拡大されます。rem だけがズームできるわけではありませんが、相対的な文字サイズや余白を作りやすく、利用者の表示設定にも対応しやすくなります。</p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-900 dark:text-slate-100">サイズに応じて px と rem を使い分ける</h3>
+              <p class="mt-1">本文・見出しの文字サイズや、文字と一緒に拡大したい余白には rem が便利です。細い境界線やアイコンなど、文字サイズに連動させる必要がない寸法には px が適しています。用途に応じて使い分けてください。</p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-900 dark:text-slate-100">clamp() で滑らかに調整する</h3>
+              <p class="mt-1">clamp() は最小値・推奨値・最大値を指定し、その範囲内でサイズを画面幅に応じて変化させます。小さな画面で大きくなりすぎたり、大きな画面で際限なく拡大したりするのを防ぎながら、レスポンシブな表示を作れます。</p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="mt-8 text-center text-xs text-slate-600 dark:text-slate-500">計算結果は小数点第4位まで表示します。</footer>
+    </div>
+  </body>
+</html>
